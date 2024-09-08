@@ -82,7 +82,7 @@ const LoginScreen = ({ navigation }) => {
 
       <Text style={[styles.signupText, isDarkMode ? styles.darkText : styles.lightText]}>
         Don't have an account?{' '}
-        <Text style={styles.signupLink} onPress={() => navigation.navigate('SignUpScreen')}>Sign Up</Text>
+        <Text style={styles.signupLink} onPress={() => navigation.navigate('SignUp')}>Sign Up</Text>
       </Text>
     </View>
   );
