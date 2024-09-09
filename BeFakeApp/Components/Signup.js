@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
 import axios from "axios";
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +34,12 @@ const SignUpScreen = () => {
       });
 
       // On success
-      Alert.alert("Success", "Account created successfully!");
+      if (response.status === 201) {
+        Alert.alert('Success', 'Account created successfully! Please log in.');
+        navigation.navigate('Login');  // Redirect to Login page
+      } else {
+        Alert.alert('Error', 'There was an issue creating your account.');
+      }
     } catch (error) {
       // On failure
       console.error(error);

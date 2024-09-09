@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet, Alert, Switch } from 'react-native';
 import axios from 'axios';
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation , setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,6 +27,8 @@ const LoginScreen = ({ navigation }) => {
 
       if (response.status === 200) {
         Alert.alert('Login Successful', `Welcome, ${response.data.username}`);
+        setIsLoggedIn(true);  
+        navigation.navigate('Home');  
       }
     } catch (error) {
         console.log("dfadfgwrgr")
